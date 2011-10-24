@@ -6,11 +6,12 @@ require 'unified_redis/version'
 Gem::Specification.new do |s|
   s.name         = "unified-redis"
   s.version      = UnifiedRedis::VERSION
-  s.authors      = ["François de Metz"]
-  s.email        = "fdemetz@af83.com"
+
+  s.authors      = ["François de Metz", "Jean-Denis Vauguet"]
+  s.email        = ["fdemetz@af83.com", "jdvauguet@af83.com"]
   s.homepage     = "https://github.com/af83/unified-redis"
-  s.summary      = "[summary]"
-  s.description  = "[description]"
+  s.summary      = "An unified redis interface for redis-rb and em-redis."
+  s.description  = "An unified redis interface for redis-rb and em-redis."
 
   s.files        = `git ls-files app lib`.split("\n")
   s.require_path = 'lib'
