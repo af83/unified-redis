@@ -1,35 +1,18 @@
-require 'redis'
-require 'em-redis'
-
 module UnifiedRedis
   module Adapter
-    def self.backends
+    # List of available adapters
+    def self.adapters
       {
         'Redis'                                               => "Redis",
         'EventMachine::Protocols::Redis::EM_CONNECTION_CLASS' => 'EMRedis'
       }
     end
 
-    class Redis
-      def initialize(redis)
-        @redis = redis
-      end
-
-      def call(command, *args)
-        *result = @redis.send(command, *args)
-        yield *result if block_given?
-        return *result
-      end
-    end
-
-    class EMRedis
-      def initialize(redis)
-        @redis = redis
-      end
-
-      def call(command, *args, &block)
-        @redis.send(command, *args, &block)
-      end
+    def self.get_adapter(redis)
+      adapter = self.adapters[redis.class.to_s]
+      raise "Adapter not found" if adapter.nil?
+      require "unified_redis/adapters/#{adapter.downcase}"
+      Adapter.const_get(adapter).new(redis)
     end
   end
 end
