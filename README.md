@@ -1,14 +1,16 @@
 # UnifiedRedis
 
-A unified redis interface for `redis-rb` and `em-redis`.
+An unified redis interface for `redis-rb` and `em-redis`.
+
+**Work in progress**
 
 ## Why ?
 
-If you have some library which is used by both asynchronous and synchronous code, you would probably the same API.
+If you have some library which is used by both asynchronous and synchronous code, you probably want the same API.
 
-For example, we have a stats module in production. We increment values inside a code running with EventMachine, but we expose data with a web frontend.
+For example, we have a stats module in production. We increment values inside a code running with EventMachine, but we expose data with a sinatra frontend.
 
-The common denominator between asynchronous and synchronous is blocks. UnifiedRedis allows you to use the same API with either `redis-rb` and `em-redis`.
+The common denominator between asynchronous and synchronous is blocks. UnifiedRedis allows you to use the same API with either `redis-rb` or `em-redis`.
 
 ## Install
 
