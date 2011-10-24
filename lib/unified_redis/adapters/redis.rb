@@ -5,7 +5,7 @@ module UnifiedRedis
         @redis = redis
       end
 
-      def call(command, *args)
+      def method_missing(command, *args)
         *result = @redis.send(command, *args)
         yield *result if block_given?
         return *result

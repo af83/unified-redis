@@ -1,8 +1,7 @@
-require 'unified_redis/core'
 require 'unified_redis/adapter'
 
 module UnifiedRedis
   def self.new(redis)
-    Core.new(redis)
+    Adapter.get_adapter(redis)
   end
 end
