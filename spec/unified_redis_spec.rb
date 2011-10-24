@@ -1,5 +1,4 @@
 require 'spec_helper'
-require_relative '../lib/unified_redis'
 
 shared_examples "unified_redis_sync" do
   before do
