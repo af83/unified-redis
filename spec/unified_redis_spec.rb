@@ -17,6 +17,12 @@ shared_examples "unified_redis" do
     end
   end
 
+  it "should be able to use mget" do
+    @r.mget("plop", "plip") do |values|
+      values.should == [nil, nil]
+      EM.stop if EM.reactor_running?
+    end
+  end
 end
 
 
