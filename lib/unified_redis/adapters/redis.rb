@@ -6,10 +6,12 @@ module UnifiedRedis
         @redis = redis
       end
 
-      def method_missing(command, *args)
-        result = @redis.send(command, *args)
-        yield result if block_given?
-        return result
+      ::Redis.instance_methods(false).each do |command|
+        define_method command do |*args|
+          result = @redis.send(command, *args)
+          yield result if block_given?
+          return result
+        end
       end
     end
   end
