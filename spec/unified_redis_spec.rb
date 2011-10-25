@@ -26,7 +26,7 @@ shared_examples "unified_redis" do
 end
 
 
-describe "Unified::Redis" do
+describe UnifiedRedis do
   context "with redis-rb" do
     before do
       @r = UnifiedRedis.new(Redis.new)
