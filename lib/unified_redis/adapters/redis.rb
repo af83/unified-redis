@@ -1,3 +1,4 @@
+# encoding: utf-8
 module UnifiedRedis
   module Adapter
     class Redis
