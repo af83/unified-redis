@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    unified-redis (0.0.1)
+    unified-redis (0.0.2)
       eventmachine (~> 1.0.0.beta)
 
 GEM

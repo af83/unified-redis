@@ -7,9 +7,9 @@ module UnifiedRedis
       end
 
       ::Redis.instance_methods(false).each do |command|
-        define_method command do |*args|
+        define_method command do |*args, &block|
           result = @redis.send(command, *args)
-          yield result if block_given?
+          block.call(result) if block
           return result
         end
       end
